@@ -1,0 +1,97 @@
+/*primero que nada, pongo los colores principales que usare en la app*/
+:root {
+    --primary: #0d6efd;
+    --secondary: #6c757d;
+    --success: #198754;
+    --danger: #dc3545;
+    --bg: #f8f9fa;
+}
+
+/*defino estilos basicos para el body y header*/
+body { font-family: 'Segoe UI', sans-serif; background-color: var(--bg); margin: 0; padding: 0; }
+
+header { background: white; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 4px rgba(0,0,0,0.1); }
+h1 { margin: 0; font-size: 1.5rem; color: #333; }
+
+/*esta es la clase contenedora principal*/
+.container { padding: 2rem; max-width: 1200px; margin: 0 auto; }
+
+/* sencillamente defino los espacios que tendra el grid con cada tarea */
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+/* aqui se el estilo que tendra la card */
+.card {
+    background: white;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border-left: 5px solid #ccc;
+    position: relative;
+}
+/* efecto hover para las tarjetas */
+.card:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.1); }
+
+/* diferentes colores segun el estado de la tarea */
+.card.pending { border-left-color: #ffc107; }
+.card.completed { border-left-color: var(--success); opacity: 0.7; }
+
+/* estilos para el contenido dentro de la tarjeta */
+.card h3 { margin: 0 0 10px 0; color: #222; }
+.card p { color: #666; margin: 0; font-size: 0.9rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+
+/* estilos para el modal */
+.modal-overlay {
+    display: none;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.5);
+    z-index: 1000;
+    justify-content: center; align-items: center;
+}
+
+/* muestro el modal cuando se agrega la clase active */
+.modal-content {
+    background: white;
+    width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    overflow: hidden;
+    animation: slideIn 0.3s;
+}
+
+/* animacion para el modal */
+@keyframes slideIn { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+/* estilos del header, body y footer para cada modal*/
+.modal-header { padding: 15px 20px; background: #f1f1f1; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #ddd; }
+.modal-header h2 { margin: 0; font-size: 1.2rem; }
+
+.modal-body { padding: 20px; }
+.modal-footer { padding: 15px 20px; background: #f1f1f1; border-top: 1px solid #ddd; display: flex; justify-content: flex-end; gap: 10px; }
+
+/* tamaño de la x y estilo del cursor */
+.close-btn { font-size: 1.5rem; cursor: pointer; }
+
+/* aqui defino los estilos para los formularios dentro de los modales */
+.form-group { margin-bottom: 15px; }
+.form-group label { display: block; margin-bottom: 5px; font-weight: bold; font-size: 0.9rem; }
+input, textarea { width: 100%; padding: 8px; border: 1px solid #ced4da; border-radius: 4px; box-sizing: border-box; font-family: inherit; }
+
+/* se resalta el campo de edicion */
+.edit-field { border: 2px solid var(--primary); background: #f0f8ff; font-size: 1rem; margin-bottom: 10px; }
+
+/* los colores y estilos de los botones */
+button { padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer; display: inline-flex; align-items: center; gap: 5px; font-weight: 500; }
+.btn-primary { background: var(--primary); color: white; }
+.btn-secondary { background: var(--secondary); color: white; }
+.btn-danger { background: var(--danger); color: white; }
+.btn-success { background: var(--success); color: white; }
+
+/* estilos para las etiquetas de estado */
+.badge { padding: 5px 10px; border-radius: 12px; font-size: 0.8rem; font-weight: bold; }
+.desc-text { line-height: 1.6; color: #444; white-space: pre-wrap; }

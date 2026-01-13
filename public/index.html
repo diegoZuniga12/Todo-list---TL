@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo list - Diego Zuñiga</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <header>
+        <!--Primero pongo el titulo que veremos del sitio-->
+        <h1>Gestión de Tareas</h1>
+        <!--Despues para mayor comodidad para el usuario, cree un boton el cual tendra la funcion
+        de abrir un modal, o una ventana emergente, no se como lo llamen y nos dejara registrar
+        los datos que se necesita para la creacion de una nueva tarea-->
+        <button class="btn-primary" onclick="openCreateModal()">
+            <span class="material-icons">add</span> Nueva Tarea
+        </button>
+    </header>
+
+    <main class="container">
+        <!--aqui lo unico que hago es definir el "grid" en donde iran acomodadas las tareas
+        para una mehjor visualizacion de las mismas-->
+        <div id="tasksGrid" class="grid-container">
+            </div>
+    </main>
+
+    <!--estructuro como es que se vera el modal
+    empezando por el header de la venta,a asi como un boton para cerrar la ventana
+    pongo el titulo de la tarea asi como la descripcion que tendra
+    
+    al igual estoy poniendo 2 botones para un mejor flujo de usuario
+    -cancelar: cierra el modal sin guardar cambios
+    -guardar: guarda la tarea, siendo el titulo, el unico campo obligatorio-->
+    <div id="modalCreate" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Nueva Tarea</h2>
+                <span class="close-btn" onclick="closeModal('modalCreate')">&times;</span>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Título</label>
+                    <input type="text" id="createTitle" placeholder="Ej: Introduzca el título de la tarea">
+                </div>
+                <div class="form-group">
+                    <label>Descripción</label>
+                    <textarea id="createDesc" rows="4" placeholder="Detalles de la tarea"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" onclick="closeModal('modalCreate')">Cancelar</button>
+                <button class="btn-primary" onclick="saveNewTask()">Guardar</button>
+            </div>
+        </div>
+    </div>
+
+    <!--aqui se define el modal que estara encargado de mostrar los detalles de una tarea creada
+    contiene el titulo de la tarea, asi como del estado que tiene ya sea:
+    pendiente: la tarea aun no esta cerrada
+    completada: la tarea fue finalizada
+    se tienen 3 botones igualmente
+    los cuales son:
+    -editar: abre un modal especial para edicion
+    -eliminar: elimina la tarea
+    -completar/abrir: tiene 2 funcionalidades, la cual es abrir una tarea completada de nuevo
+    o completar una tarea.    -->
+    <div id="modalView" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="viewTitleDisplay">Título Tarea</h2>
+                <input type="text" id="editTitleInput" class="edit-field" style="display:none;">
+                
+                <span class="close-btn" onclick="closeModal('modalView')">&times;</span>
+            </div>
+            
+            <div class="modal-body">
+                <div class="status-bar">
+                    Estado: <span id="viewStatusBadge" class="badge">Pendiente</span>
+                </div>
+                <hr>
+                
+                <p id="viewDescDisplay" class="desc-text">Descripción de la tarea</p>
+                <textarea id="editDescInput" class="edit-field" rows="6" style="display:none;"></textarea>
+
+                <input type="hidden" id="currentTaskId">
+            </div>
+
+            <!--Este es el ultimo modal, el cual sirve para modificar los datos de la tarea.-->
+            <div class="modal-footer">
+                <div id="readModeButtons">
+                    <button class="btn-secondary" onclick="enableEditMode()">
+                        <span class="material-icons" style="font-size:16px">edit</span> Editar
+                    </button>
+                    <button class="btn-danger" onclick="deleteTask()">Eliminar</button>
+                    <button class="btn-success" onclick="toggleTaskStatus()">Completar / Abrir</button>
+                </div>
+
+                <div id="editModeButtons" style="display:none;">
+                    <button class="btn-secondary" onclick="disableEditMode()">Cancelar</button>
+                    <button class="btn-primary" onclick="updateTaskContent()">Guardar Cambios</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
