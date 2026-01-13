@@ -7,7 +7,7 @@ El proyecto sigue una arquitectura RESTful básica con persistencia en memoria y
 
 * **Backend:** Node.js + Express.
 * **Frontend:** HTML5, CSS3 (Grid/Modales) y JavaScript.
-* **Arquitectura de Datos:** * Modelo basado en array en memoria (simulación de una base de datos).
+* **Arquitectura de Datos:** Modelo basado en array en memoria (simulación de una base de datos).
     * Implementación de un borrado controlado mediante flag `deleted_at` para evitar perdida de datos.
 * **UI/UX:**
     * Interfaz basada en Cards y Grid.
@@ -18,7 +18,7 @@ El proyecto sigue una arquitectura RESTful básica con persistencia en memoria y
 1. Abrir terminal de CMD.
 2. Clonar el repositorio: git clone https://github.com/diegoZuniga12/Todo-list---TL.git
 3. Entrar a la carpeta del proyecto: cd Todo-list---TL
-4. Instalar dependencias por medio: npm install   
+4. Instalar dependencias: npm install   
 5. Iniciar el servidor en modo desarrollo: node server.js
 6.  Acceder a `http://localhost:3000`.
 
