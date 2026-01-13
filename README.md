@@ -15,15 +15,12 @@ El proyecto sigue una arquitectura RESTful básica con persistencia en memoria y
 
 ## Instalación y Ejecución
 
-1.  Clonar el repositorio.
-2.  Instalar dependencias por medio de cmd (hay que estar en la carpeta que corresponde):
-    * **Este comando instalara automaticamente express y las configuraciones necesarias ya previamente definidas:** npm install
-    
-3.  Iniciar el servidor en modo desarrollo en cmd (dentro de la carpeta del proyecto):
-    
-    * **Para inicializar servidor:** node server.js
-
-4.  Acceder a `http://localhost:3000`.
+1. Abrir terminal de CMD.
+2. Clonar el repositorio: git clone https://github.com/diegoZuniga12/Todo-list---TL.git
+3. Entrar a la carpeta del proyecto: cd Todo-list---TL
+4. Instalar dependencias por medio: npm install   
+5. Iniciar el servidor en modo desarrollo: node server.js
+6.  Acceder a `http://localhost:3000`.
 
 ## Endpoints API
 
@@ -33,4 +30,4 @@ El proyecto sigue una arquitectura RESTful básica con persistencia en memoria y
 | `PUT`  | `/tasks/:id`  | Actualiza estado o contenido de la tarea. |
 | `DEL`  | `/tasks/:id`  | Realiza borrado lógico de la tarea. |
 
-*Desarrollado por Diego Zúñiga - 2026*
+*Desarrollado por Diego Shair Zúñiga Villalobos - 2026*
